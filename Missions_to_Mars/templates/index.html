@@ -1,31 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- Adding the Header -->
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Mars Data</title>
-
-  
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
+<!-- Adding the Body -->
+
 <body>
-  <div class="container-fluid" id = "asd">
+  <div class="container-fluid" id="asd">
     <div class="jumbotron text-center">
       <h1>Welcome to Your Mission to Mars...</h1><br><br>
-      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Click here to get an update on the latest news!</a></p>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Click here to get an update on the latest
+          news!</a></p>
     </div>
+  </div>
+
+  <div class="container-fluid">
     <h1><b>What is the Latest News on Mars?</b></h1>
-    <h2>{{ mars.news_title }}</h2>
-    <h3>{{ mars.news_p }}</h3>
+    <h3>{{ mars.news_title }}</h3>
+    <h5>{{ mars.news_p }}</h5>
+    <br>
+    <!-- Adding the Featured Image -->
+    <div class="row">
+      <div class="col-md-6" id="mainpagerows">
+        <center>
+          <h1><b>Featured Mars Image</b></h1>
+        </center>
+        <h3>
+          <center><img src="{{ mars.featured_image }}" alt="Mars Featured Image" width="640" height="350"
+              href="{{ mars.featured_image }}"></center>
+        </h3>
+      </div>
+      <div class="col-md-6" id="mainpagerows">
+        <center>
+          <h1><b>Mars Facts</b></h1>
+        </center>
+        <center>
+          <br>{{ mars.html_table | safe }}    
+        </center>
+        <div class="row">
+        </div>
+      </div>
+    </div>
   </div>
+
+  <!-- Adding Hemisphere Columns and Rows-->
+  <div class="container-fluid">
+    <center>
+      <br><br>
+      <h1><b>Mars Hemispheres</b></h1>
+    </center>
+
+    <div class="col-md-6" id="comparison.column1">
+      <div class="row">
+        <h3>{{ mars.hemisphere_image_urls[0].title }}</h3>
+        <a href="#">
+          <center><img src="{{ mars.hemisphere_image_urls[0].img_url }}" class="img-thumbnail" alt="..." width="1000"
+              height="1000"></center>
+        </a>
+
+        <div class="row">
+          <h3>{{ mars.hemisphere_image_urls[1].title }}</h3>
+        </div>
+        <a href="#">
+          <center><img src="{{ mars.hemisphere_image_urls[1].img_url }}" class="img-thumbnail" alt="..." width="1000"
+            height="1000"></center>
+        </a>
+      </div>
+    </div>
+
+    <div class="col-md-6" id="comparison.column1">
+      <div class="row">
+        <h3>{{ mars.hemisphere_image_urls[2].title }}</h3>
+        <a href="#">
+          <center><img src="{{ mars.hemisphere_image_urls[2].img_url }}" class="img-thumbnail" alt="..." width="1000"
+            height="1000"></center>
+        </a>
+        <div class="row">
+          <h3>{{ mars.hemisphere_image_urls[3].title }}</h3>
+        </div>
+        <a href="#">
+          <center><img src="{{ mars.hemisphere_image_urls[3].img_url }}" class="img-thumbnail" alt="..." width="1000"
+            height="1000"></center>
+        </a>
+      </div>
+    </div>
+    <br>
   </div>
-
-
-
-
 
 </body>
 
